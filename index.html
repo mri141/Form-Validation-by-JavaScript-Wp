@@ -1,0 +1,332 @@
+<html>
+   <head>
+  
+      
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+      <title>Simple Form Validation with JS</title>
+<!--
+      <link rel="stylesheet" href="style.css">
+      <script type = "text/javascript" src="script.js" defer></script>
+-->
+      
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity=      "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+       
+   </head>
+    
+    
+   <body>
+      <form action = "" name = "myForm" onsubmit = "return(validate());">
+        <h1 align="center">Simple User Registration Form Validation I  with JS</h1>
+         <table align="center" cellspacing = "3" cellpadding = "3" border = "3">
+            <tr>
+               <td align = "center">Name<br>(নাম)</td>
+               <td><input type = "text" name = "name" /></td>
+            </tr>
+             
+             <tr>
+               <td align = "center">Mobile Number<br>(মোবাইল নম্বর)</td>
+               <td><input type = "text" name = "phone" /></td>
+            </tr>
+             
+            <tr>
+               <td align = "center">E-mail<br>(ই-মেইল)</td>
+               <td><input type = "text" name = "email" /></td>
+            </tr>
+            
+            <tr>
+               <td align = "center">Your Profession<br>(পেশা)</td>
+               <td>
+                  <select name = "prof">
+                     <option value = "0" selected>choose (পছন্দ করুন)</option>
+                     <option value = "1">Student (ছাত্র/ছাত্রী)</option>
+                     <option value = "2">Job Holder(চাকুরীজীবী)</option>
+                     <option value = "3">Business Man (ব্যবসায়ী)</option>
+                     <option value = "4">Job Seeker (চাকুরী সন্ধানী)</option>
+                     <option value = "5">Entrepreneur (উদ্যোক্তা)</option>
+                     <option value = "6">Retired (অবসরপ্রাপ্ত)</option>
+                  </select>
+               </td>
+            </tr>
+         </table>
+<p id="demo" style="color:red; text-align:center"></p>
+<div style="text-align:center; color:blue; font-weight: bold;"><input type = "submit" value = "Submit (জমা দিন)"/></div>  
+
+        
+    </form>
+    
+
+       
+<script>
+// ভ্যালিডেশন অংশ 
+   function validate() {
+     var text;
+       
+      if(document.myForm.name.value == "") {
+        text = "Name cannot be empty <br> (নামের অংশ খালি রাখা যাবে না)";
+        document.getElementById("demo").innerHTML = text;
+        document.myForm.name.focus() ;
+        return false;
+       }
+            
+       if(document.myForm.phone.value == "" || isNaN( document.myForm.phone.value) ||
+               document.myForm.phone.value.length != 11 ) {
+               text = "Please enter a valid 11-digit phone number <br> (অনুগ্রহপূর্বক ১১ ডিজিট এর বাংলাদেশী মোবাইল নম্বর লিখুন।)";
+               document.getElementById("demo").innerHTML = text;
+               document.myForm.phone.focus() ;
+               return false;
+            }
+    
+       if( document.myForm.email.value == "" ) {
+              text = "E-mail cannot be empty <br> (ই-মেইলের অংশ খালি রাখা যাবে না)";
+               document.getElementById("demo").innerHTML = text;
+               document.myForm.email.focus() ;
+               return false;
+            }
+    
+       var emailID = document.myForm.email.value;
+       atposn = emailID.indexOf("@");
+       dotposn = emailID.lastIndexOf(".");
+       if (atposn < 1 || ( dotposn - atposn < 2 )) {
+       text = "Please enter valid email ID  <br> (অনুগ্রহপূর্বক সঠিক ই-মেইল লিখুন)";
+       document.getElementById("demo").innerHTML = text;
+       document.myForm.email.focus() ;
+       return false;
+     }
+    
+       if( document.myForm.prof.value == "0" ) {
+         text = "Please select your Profession  <br> আপনার পেশা নি্দিষ্ট করুন)";
+         document.getElementById("demo").innerHTML = text;
+         return false;
+         }
+       
+     return(true);
+         }
+  
+    </script>
+    </body>  
+      <br>
+       
+    
+    
+    
+   <!--    Form 2-->
+ <body>
+     <h1 align="center">User Login Form II for <em>Display</em> with JS</h1>
+    <form>
+        <label for="MyEmail"> Email: </label> 
+        <input id="eml" name="MyEmail" type=text>
+    
+        <label for="MyPass"> Password: </label> 
+        <input id="pswd" name="MyPass" type=text>
+        
+        <button onclick="show(); return false;">Submit & shown your Email pass</button>
+        <div id="div1"></div>
+    </form>
+    
+    <script>
+        function show(){
+            //catching values
+            let eml = document.getElementById("eml").value; 
+            let pswd = document.getElementById("pswd").value;
+            
+            let html = "<p> Your Email : " + eml + "</p>" + "<p> Your Password : " + pswd + "</p>";
+            document.getElementById("div1").innerHTML= html;
+        }    
+    </script>
+ <br><br><br>  
+</body>
+    <br><br><br>
+    
+    
+    
+<!--    form 3-->
+    
+   <body>
+      <form action = "" name = "myForm" onsubmit = "return(validate());">
+        <h1 align="center">User Registration Form III Validation in English  with JS</h1>
+         <table align="center" cellspacing = "3" cellpadding = "3" border = "3">
+            <tr>
+               <td align = "center">Name</td>
+               <td><input type = "text" name = "name" /></td>
+            </tr>
+             
+             <tr>
+               <td align = "center">Mobile Number</td>
+               <td><input type = "text" name = "phone" /></td>
+            </tr>
+             
+            <tr>
+               <td align = "center">E-mail</td>
+               <td><input type = "text" name = "email" /></td>
+            </tr>
+            
+            <tr>
+               <td align = "center">Your Profession</td>
+               <td>
+                  <select name = "prof">
+                     <option value = "0" selected>choose</option>
+                     <option value = "1">Student</option>
+                     <option value = "2">Job Holder</option>
+                     <option value = "3">Business Man</option>
+                     <option value = "4">Job Seeker</option>
+                     <option value = "5">Entrepreneur</option>
+                     <option value = "6">Retired</option>
+                  </select>
+               </td>
+            </tr>
+         </table>
+<p id="demo" style="color:red; text-align:center"></p>
+<div style="text-align:center; color:blue; font-weight: bold;"><input type = "submit" value = "Submit"/></div>       
+    </form>
+    
+<script>
+// ভ্যালিডেশন অংশ 
+   function validate() {
+     var text;
+       
+      if(document.myForm.name.value == "") {
+        text = "Name cannot be empty";
+        document.getElementById("demo").innerHTML = text;
+        document.myForm.name.focus() ;
+        return false;
+       }
+            
+       if(document.myForm.phone.value == "" || isNaN( document.myForm.phone.value) ||
+               document.myForm.phone.value.length != 11 ) {
+               text = "Please enter a valid 11-digit phone number";
+               document.getElementById("demo").innerHTML = text;
+               document.myForm.phone.focus() ;
+               return false;
+            }
+    
+       if( document.myForm.email.value == "" ) {
+              text = "E-mail cannot be empty";
+               document.getElementById("demo").innerHTML = text;
+               document.myForm.email.focus() ;
+               return false;
+            }
+    
+       var emailID = document.myForm.email.value;
+       atposn = emailID.indexOf("@");
+       dotposn = emailID.lastIndexOf(".");
+       if (atposn < 1 || ( dotposn - atposn < 2 )) {
+       text = "Please enter valid email ID";
+       document.getElementById("demo").innerHTML = text;
+       document.myForm.email.focus() ;
+       return false;
+     }
+    
+       if( document.myForm.prof.value == "0" ) {
+         text = "Please select your Profession";
+         document.getElementById("demo").innerHTML = text;
+         return false;
+         }
+       
+     return(true);
+         }
+  
+    </script>
+    </body> 
+      <br>
+    
+    
+
+
+ <body>    
+  
+<form action = "" name = "myForm" onsubmit = "return(validate());">
+         <h3 align="center">রেজিস্ট্রেশন (নিবন্ধন) ফর্ম ভ্যালিডেশন IV <em>সম্পূর্ণ বাংলা</em> (জাভা্ স্ক্রিপ্টের মাধ্যমে)</h3>
+         <table align="center" cellspacing = "3" cellpadding = "3" border = "3">
+            <tr>
+               <td align = "center">নাম</td>
+               <td><input type = "text" name = "name" /></td>
+            </tr>
+             
+             <tr>
+               <td align = "center">মোবাইল নম্বর</td>
+               <td><input type = "text" name = "phone" /></td>
+            </tr>
+             
+            <tr>
+               <td align = "center">ই-মেইল</td>
+               <td><input type = "text" name = "email" /></td>
+            </tr>
+            
+            <tr>
+               <td align = "center">পেশা</td>
+               <td>
+                  <select name = "subject">
+                     <option value = "0" selected>পছন্দ করুন</option>
+                     <option value = "1">ছাত্র/ছাত্রী</option>
+                     <option value = "2">চাকুরীজীবী</option>
+                     <option value = "3">ব্যবসায়ী</option>
+                     <option value = "4">চাকুরী সন্ধানী / বেকার</option>
+                     <option value = "5">উদ্যোক্তা</option>
+                     <option value = "6">অবসরপ্রাপ্ত</option>
+                  </select>
+               </td>
+            </tr>
+         </table>
+         <p id="demo2" style="color:red; text-align:center"></p>
+   <div style="text-align:center; color:green; font-weight: bold;"><input type = "submit" value = "জমা দিন" /></div>
+      </form>
+     
+     
+     <script>
+// ভ্যালিডেশন অংশ 
+   function validate() {
+     var text;
+       
+      if(document.myForm.name.value == "") {
+        text = "নামের অংশ খালি রাখা যাবে না";
+        document.getElementById("demo2").innerHTML = text;
+        document.myForm.name.focus() ;
+        return false;
+       }
+            
+       if(document.myForm.phone.value == "" || isNaN( document.myForm.phone.value) ||
+               document.myForm.phone.value.length != 11 ) {
+               text = "অনুগ্রহপূর্বক ১১ ডিজিট এর বাংলাদেশী মোবাইল নম্বর লিখুন।";
+               document.getElementById("demo2").innerHTML = text;
+               document.myForm.phone.focus() ;
+               return false;
+            }
+    
+       if( document.myForm.email.value == "" ) {
+              text = "ই-মেইলের অংশ খালি রাখা যাবে না।";
+               document.getElementById("demo2").innerHTML = text;
+               document.myForm.email.focus() ;
+               return false;
+            }
+    
+       var emailID = document.myForm.email.value;
+       atposn = emailID.indexOf("@");
+       dotposn = emailID.lastIndexOf(".");
+       if (atposn < 1 || ( dotposn - atposn < 2 )) {
+       text = "অনুগ্রহপূর্বক সঠিক ই-মেইল লিখুন।";
+       document.getElementById("demo2").innerHTML = text;
+       document.myForm.email.focus() ;
+       return false;
+     }
+    
+       if( document.myForm.prof.value == "0" ) {
+         text = "আপনার পেশা নি্দিষ্ট করুন।";
+         document.getElementById("demo2").innerHTML = text;
+         return false;
+         }
+       
+     return(true);
+         }
+  
+    </script>
+ </body>
+    -->   
+</html>

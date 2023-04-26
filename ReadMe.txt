@@ -1,0 +1,2 @@
+JavaScript Form Validation
+Form validation is a very useful aspect and used by many websites for client-side validation of user details, card details, address details, etc. For example, if there is a mandatory input field name, the user may type a number or leave the field blank, type just one letter, etc. All these validations can be easily done using JavaScript. Let us see a simple form validation project. As usual, the project will need HTML elements as well. We have not done any extensive styling, just included basic elements in the HTML itself. 
